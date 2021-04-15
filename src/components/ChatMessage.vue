@@ -8,14 +8,19 @@
         <span class="body">
             <span v-for="(frag, id) in message.messageFragments" v-bind:key="id">
                 <span v-if="frag.type == 'text'">{{ frag.data }}</span>
-                <ChatEmote v-if="frag.type == 'emote' && $root.vp.settings.emotesEnabled" v-bind:emote="frag.data"></ChatEmote>
-                <span v-if="frag.type == 'emote' && !$root.vp.settings.emotesEnabled">{{ frag.data.name }}</span>
+                <ChatEmote
+                    v-if="frag.type == 'emote' && $root.vp.settings.emotesEnabled"
+                    v-bind:emote="frag.data"
+                ></ChatEmote>
+                <span
+                    v-if="frag.type == 'emote' && !$root.vp.settings.emotesEnabled"
+                >{{ frag.data.name }}</span>
             </span>
         </span>
     </div>
 </template>
 
-<script>
+<script lang="ts">
 
 import ChatEmote from './ChatEmote.vue'
 import ChatBadge from './ChatBadge.vue'
@@ -25,7 +30,7 @@ export default {
     components: {
         ChatEmote,
         ChatBadge
-	},
+    },
     props: {
         message: Object
     },

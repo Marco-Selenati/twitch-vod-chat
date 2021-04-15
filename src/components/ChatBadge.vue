@@ -1,8 +1,8 @@
 <template>
-    <img class="badge" v-bind:src="badge.url" >
+    <img class="badge" v-bind:src="badge.url" />
 </template>
 
-<script>
+<script lang="ts">
 export default {
     name: 'ChatBadge',
     props: {

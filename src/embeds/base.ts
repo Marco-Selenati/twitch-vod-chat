@@ -1,62 +1,60 @@
-import VODPlayer from '../vodplayer';
+import VODPlayer from "../vodplayer";
 
 export default class EmbedPlayer {
+  vodplayer: VODPlayer | null;
+  callbacks: any;
+  manualPause: boolean;
 
-    vodplayer: VODPlayer | null;
-    callbacks: any;
-    manualPause: boolean;
+  constructor() {
+    this.vodplayer = null;
+    this.manualPause = false;
+    this.callbacks = {};
+  }
 
-    constructor() {
-        this.vodplayer = null;
-        this.manualPause = false;
-        this.callbacks = {};
+  html() {
+    return "";
+  }
+
+  setup() {
+    let e = document.getElementById("video_container");
+    if (e) {
+      e.innerHTML = this.html();
+      console.log("Set up embed player");
     }
+  }
 
-    html() {
-        return '';
-    }
+  play() {
+    alert("no play implemented");
+  }
 
-    setup() {
-        let e = document.getElementById("video_container");
-        if(e){
-            e.innerHTML = this.html();
-            console.log("Set up embed player");
-        }
-    }
+  seek(seconds: number) {
+    alert("no seek implemented");
+  }
 
-    play() {
-        alert('no play implemented');
-    }
+  getDuration() {
+    alert("no duration implemented");
+    return 0;
+  }
 
-    seek(seconds: number) {
-        alert('no seek implemented');
-    }
+  getCurrentTime() {
+    alert("no current time implemented");
+    return 0;
+  }
 
-    getDuration() {
-        alert('no duration implemented');
-        return 0;
-    }
+  setCallback(key: string, callback: any) {
+    this.callbacks[key] = callback;
+  }
 
-    getCurrentTime() {
-        alert('no current time implemented');
-        return 0;
-    }
+  callPause(state: boolean) {
+    console.log("call pause", state);
+    this.manualPause = state;
+  }
 
-    setCallback(key: string, callback: any) {
-        this.callbacks[key] = callback;
-    }
+  setStatusText(text: string) {
+    this.vodplayer.status_video = text;
+  }
 
-    callPause(state: boolean) {
-        console.log("call pause", state);
-        this.manualPause = state;
-    }
-
-    setStatusText( text: string ){
-        this.vodplayer.status_video = text;
-    }
-
-    get isPaused() {
-        return false;
-    }
-
+  get isPaused() {
+    return false;
+  }
 }

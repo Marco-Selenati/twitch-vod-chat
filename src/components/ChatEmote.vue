@@ -1,20 +1,20 @@
 <template>
-    <img v-bind:class="classObject" v-bind:src="emote.url" >
+    <img v-bind:class="classObject" v-bind:src="emote.url" />
 </template>
 
-<script>
+<script lang="ts">
 export default {
     name: 'ChatEmote',
     props: {
         emote: Object
     },
     computed: {
-        classObject(){
+        classObject() {
             return {
                 'emote': true,
                 ['network-' + this.emote.network]: true,
                 [this.emote.class]: true,
-                'is-small': this.$root.vp.settings.smallEmotes
+                'is-small': this.$root.settings.smallEmotes
             }
         }
     }
